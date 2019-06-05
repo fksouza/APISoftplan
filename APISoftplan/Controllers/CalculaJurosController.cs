@@ -1,5 +1,7 @@
 ﻿using APISoftplan.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Net;
 
 namespace APISoftplan.Controllers
 {
@@ -16,13 +18,24 @@ namespace APISoftplan.Controllers
         }
 
         // GET api/calculajuros
-        [HttpGet()]
-        public ActionResult<decimal> Calculajuros(decimal valorinicial, int meses)
+        [HttpGet]
+        public ActionResult<string> Calculajuros(decimal valorinicial, int meses)
         {
-            //var calculaJuros = new CalculaJuros { ValorInicial = valorInicial, Meses = meses };
+            try
+            {
+                if (valorinicial <= 0 && meses <= 0)
+                    return NotFound();
 
-            //return _calculaJuros.CalcularjurosCompostos();
-            return valorinicial * meses;
+                var calculaJuros = new CalculaJuros { ValorInicial = (double)valorinicial, Meses = meses };
+
+                var result = _calculaJuros.CalcularjurosCompostos(calculaJuros);
+
+                return result;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
     }

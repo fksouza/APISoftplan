@@ -1,33 +1,31 @@
-﻿namespace APISoftplan.Models
+﻿using System;
+
+namespace APISoftplan.Models
 {
     public class CalculaJuros
     {
-        public decimal ValorInicial { get; set; }
+        public double ValorInicial { get; set; }
         public int Meses { get; set; }
-        public double Juros { get; set; }
         
-
         public CalculaJuros()
         {
 
         }
 
-        public CalculaJuros(decimal valorInicial, int meses, double juros, decimal valorFinal)
+        public CalculaJuros(double valorInicial, int meses)
         {
             ValorInicial = valorInicial;
-            Meses = meses;
-            Juros = 0.01;            
+            Meses = meses;           
         }
 
-        public decimal CalcularjurosCompostos()
+        public string CalcularjurosCompostos(CalculaJuros calculaJuros)
         {
-            //Valor Final = Valor Inicial * (1 + juros) ^ Tempo
-            // /calculajuros?valorinicial=100&meses=5 
-            //Resultado esperado: 105,10
+            var juros = 0.01;
 
-            //var result = Math.Pow(ValorInicial * (1 + Juros), Meses);
+            var result = calculaJuros.ValorInicial * Math.Pow((1 + juros), calculaJuros.Meses);
 
-            return 0;
+            return result.ToString("F");
         }
     }
 }
+

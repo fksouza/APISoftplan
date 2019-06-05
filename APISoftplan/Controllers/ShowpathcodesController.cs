@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using APISoftplan.Models;
-using Microsoft.AspNetCore.Http;
+﻿using APISoftplan.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 
 namespace APISoftplan.Controllers
 {
@@ -17,15 +11,13 @@ namespace APISoftplan.Controllers
 
         public ShowpathcodesController(Showpathcodes showpathcodes)
         {
-            
             _showpathcodes = showpathcodes;
         }
-               
-        // GET api/values
-        [HttpGet]
+
+        // GET api/Showpathcodes
+        [HttpGet]        
         public ActionResult<string> ShowMeTheCode()
         {
-
             string gitPath = _showpathcodes.ShowPathCodeGit();
 
             return gitPath;
