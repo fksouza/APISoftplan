@@ -16,7 +16,7 @@ namespace WebAPI.TestesUnitarios.Scenarios
         }
 
         [Fact]
-        public async Task Showpathcodes_Get_ReturnsOkResponse()
+        public async Task Showpathcodes_ReturnsOkResponse()
         {
             var response = await _showpathcodesContext.Client.GetAsync("/api/Showpathcodes");
             response.EnsureSuccessStatusCode();
@@ -24,14 +24,14 @@ namespace WebAPI.TestesUnitarios.Scenarios
         }
 
         [Fact]
-        public async Task Showpathcodes_GetById_ReturnsBadRequestResponse()
+        public async Task Showpathcodes_ReturnsBadRequestResponse()
         {
             var response = await _showpathcodesContext.Client.GetAsync("/api/Showpathcodes/XXX");
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
 
         [Fact]
-        public async Task Showpathcodes_GetById_CorrectContentType()
+        public async Task Showpathcodes_CorrectContentType()
         {
             var response = await _showpathcodesContext.Client.GetAsync("/api/Showpathcodes");
             response.EnsureSuccessStatusCode();

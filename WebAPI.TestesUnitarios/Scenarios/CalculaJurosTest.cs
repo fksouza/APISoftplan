@@ -17,7 +17,7 @@ namespace WebAPI.TestesUnitarios.Scenarios
         }
 
         [Fact]
-        public async Task CalculaJurosReturnsOkResponse()
+        public async Task CalculaJuros_ReturnsOkResponse()
         {
             var response = await _calculaJurosContext.Client.GetAsync("/api/CalculaJuros?valorinicial=100&meses=5");
             response.EnsureSuccessStatusCode();
@@ -25,14 +25,14 @@ namespace WebAPI.TestesUnitarios.Scenarios
         }
 
         [Fact]
-        public async Task CalculaJurosReturnsBadRequestResponse()
+        public async Task CalculaJuros_ReturnsBadRequestResponse()
         {
             var response = await _calculaJurosContext.Client.GetAsync("/api/CalculaJuros?valorinicial=xxx&meses=xxx");
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
 
         [Fact]
-        public async Task CalculaJurosCorrectContentType()
+        public async Task CalculaJuros_CorrectContentType()
         {
             var response = await _calculaJurosContext.Client.GetAsync("/api/CalculaJuros?valorinicial=100&meses=5");
             response.EnsureSuccessStatusCode();
