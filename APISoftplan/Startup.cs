@@ -33,9 +33,6 @@ namespace APISoftplan
                 });
             });
 
-            //services.Configure<AppSettings>(Configuration.GetSection("Git"));
-            services.Configure<AppSettings>(Configuration.GetSection("Git"));
-
             services.AddScoped<CalculaJuros>();
             services.AddScoped<Showpathcodes>();
             

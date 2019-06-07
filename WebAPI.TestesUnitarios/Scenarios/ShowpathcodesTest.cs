@@ -10,9 +10,9 @@ namespace WebAPI.TestesUnitarios.Scenarios
     {
         private readonly ShowpathcodesContext _showpathcodesContext;
 
-        public ShowpathcodesTest(ShowpathcodesContext showpathcodesContext)
+        public ShowpathcodesTest()
         {
-            _showpathcodesContext = showpathcodesContext;
+            _showpathcodesContext = new ShowpathcodesContext();
         }
 
         [Fact]
@@ -24,18 +24,11 @@ namespace WebAPI.TestesUnitarios.Scenarios
         }
 
         [Fact]
-        public async Task Showpathcodes_ReturnsBadRequestResponse()
-        {
-            var response = await _showpathcodesContext.Client.GetAsync("/api/Showpathcodes/XXX");
-            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
-        }
-
-        [Fact]
         public async Task Showpathcodes_CorrectContentType()
         {
             var response = await _showpathcodesContext.Client.GetAsync("/api/Showpathcodes");
             response.EnsureSuccessStatusCode();
-            response.Content.Headers.ContentType.ToString().Should().Be("text/json; charset=utf-8");
+            response.Content.Headers.ContentType.ToString().Should().Be("text/plain; charset=utf-8");
         }
     }
 }

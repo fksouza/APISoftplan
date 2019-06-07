@@ -9,7 +9,6 @@ namespace APISoftplan.Controllers
     [ApiController]
     public class CalculaJurosController : ControllerBase
     {
-
         private readonly CalculaJuros _calculaJuros;
 
         public CalculaJurosController(CalculaJuros calculaJuros)
@@ -19,18 +18,18 @@ namespace APISoftplan.Controllers
 
         // GET api/calculajuros
         [HttpGet]
-        public ActionResult<string> Calculajuros(decimal valorinicial, int meses)
+        public ActionResult Calculajuros(decimal valorinicial, int meses)
         {
             try
             {
                 if (valorinicial <= 0 && meses <= 0)
-                    return NotFound();
+                    return BadRequest();
 
                 var calculaJuros = new CalculaJuros { ValorInicial = (double)valorinicial, Meses = meses };
 
                 var result = _calculaJuros.CalcularjurosCompostos(calculaJuros);
 
-                return result;
+                return Ok(result);
             }
             catch (Exception e)
             {

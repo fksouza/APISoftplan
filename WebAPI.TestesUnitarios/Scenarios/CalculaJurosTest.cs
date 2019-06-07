@@ -11,9 +11,9 @@ namespace WebAPI.TestesUnitarios.Scenarios
     {
         private readonly CalculaJurosContext _calculaJurosContext;
 
-        public CalculaJurosTest(CalculaJurosContext calculaJurosContext)
+        public CalculaJurosTest()
         {
-            _calculaJurosContext = calculaJurosContext;
+            _calculaJurosContext = new CalculaJurosContext();
         }
 
         [Fact]

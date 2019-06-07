@@ -1,5 +1,6 @@
 ﻿using APISoftplan.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace APISoftplan.Controllers
 {
@@ -15,12 +16,23 @@ namespace APISoftplan.Controllers
         }
 
         // GET api/Showpathcodes
-        [HttpGet]        
-        public ActionResult<string> ShowMeTheCode()
+        [HttpGet]
+        public ActionResult ShowMeTheCode()
         {
-            string gitPath = _showpathcodes.ShowPathCodeGit();
+            try
+            {
+                var gitpath = _showpathcodes.ShowPathCodeGit();
 
-            return gitPath;
+                if (string.IsNullOrEmpty(gitpath))
+                    return NotFound();
+
+                return Ok(gitpath);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message); 
+            }
+           
         }
 
     }
