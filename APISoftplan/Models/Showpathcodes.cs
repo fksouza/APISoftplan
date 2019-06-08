@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.Options;
+﻿using APISoftplan.Interface;
 
 namespace APISoftplan.Models
 {
-    public class Showpathcodes
+    public class Showpathcodes : IShowpathcodes
     {
       
         public Showpathcodes()

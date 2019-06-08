@@ -1,21 +1,27 @@
-﻿using APISoftplan.Models;
+﻿using APISoftplan.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
 namespace APISoftplan.Controllers
 {
+    
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController]    
     public class ShowpathcodesController : ControllerBase
     {
-        private readonly Showpathcodes _showpathcodes;
+        private readonly IShowpathcodes _showpathcodes;
 
-        public ShowpathcodesController(Showpathcodes showpathcodes)
+        public ShowpathcodesController(IShowpathcodes showpathcodes)
         {
             _showpathcodes = showpathcodes;
         }
 
         // GET api/Showpathcodes
+        /// <summary>
+        /// Retorna repositório GIT da aplicação.
+        /// </summary>
+        /// <returns> </returns>
         [HttpGet]
         public ActionResult ShowMeTheCode()
         {

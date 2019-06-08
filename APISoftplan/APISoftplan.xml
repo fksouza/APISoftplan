@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>APISoftplan</name>
+    </assembly>
+    <members>
+        <member name="M:APISoftplan.Controllers.CalculaJurosController.Calculajuros(System.Decimal,System.Int32)">
+            <summary>
+            Retorna Cálculo de Juros Compostos.
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:APISoftplan.Controllers.ShowpathcodesController.ShowMeTheCode">
+            <summary>
+            Retorna repositório GIT da aplicação.
+            </summary>
+            <returns> </returns>
+        </member>
+    </members>
+</doc>

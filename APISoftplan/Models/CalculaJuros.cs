@@ -1,15 +1,21 @@
-﻿using System;
+﻿using APISoftplan.Interface;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace APISoftplan.Models
 {
-    public class CalculaJuros
+    public class CalculaJuros : ICalculaJuros
     {
+       
         public double ValorInicial { get; set; }
+       
         public int Meses { get; set; }
-        
+
+        double juros = 0.01;
+
         public CalculaJuros()
         {
-
+            
         }
 
         public CalculaJuros(double valorInicial, int meses)
@@ -20,8 +26,6 @@ namespace APISoftplan.Models
 
         public string CalcularjurosCompostos(CalculaJuros calculaJuros)
         {
-            var juros = 0.01;
-
             var result = calculaJuros.ValorInicial * Math.Pow((1 + juros), calculaJuros.Meses);
 
             return result.ToString("F");

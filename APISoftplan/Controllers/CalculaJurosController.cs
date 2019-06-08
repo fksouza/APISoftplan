@@ -1,23 +1,30 @@
-﻿using APISoftplan.Models;
+﻿using APISoftplan.Interface;
+using APISoftplan.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Net;
 
 namespace APISoftplan.Controllers
 {
+    
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController]    
     public class CalculaJurosController : ControllerBase
     {
-        private readonly CalculaJuros _calculaJuros;
+        private readonly ICalculaJuros _calculaJuros;
 
-        public CalculaJurosController(CalculaJuros calculaJuros)
+        public CalculaJurosController(ICalculaJuros calculaJuros)
         {
             _calculaJuros = calculaJuros;
         }
 
-        // GET api/calculajuros
-        [HttpGet]
+        // GET api/calculajuros        
+        /// <summary>
+        /// Retorna Cálculo de Juros Compostos.
+        /// </summary>
+        /// <returns> </returns>
+        
+        [HttpGet]        
         public ActionResult Calculajuros(decimal valorinicial, int meses)
         {
             try
